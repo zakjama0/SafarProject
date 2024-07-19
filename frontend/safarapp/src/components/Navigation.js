@@ -71,11 +71,23 @@ const NavBar = ({ postUser, login, logout }) => {
                             }
                             {darkMode ? <Moon onClick={toggleDark} className='cursor-pointer text-white' /> : <Sun onClick={toggleDark} className='cursor-pointer' />}
                         </div>
-                        <div className='lg:hidden md:flex flex-col justify-end'>
-                            <button onClick={toggleNavBar}>
-                                {mobileDrawerOpen ? <X className='text-black dark:text-white' /> : <Menu className='text-black dark:text-white' />}
-                            </button>
-                        </div>
+                        <div className='lg:hidden md:flex flex-row justify-between items-center'>
+  <div className='flex items-center'>
+    {darkMode ? (
+      <Moon onClick={toggleDark} className='cursor-pointer text-white' />
+    ) : (
+      <Sun onClick={toggleDark} className='cursor-pointer' />
+    )}
+    <button onClick={toggleNavBar} className='ml-4'>
+      {mobileDrawerOpen ? (
+        <X className='text-black dark:text-white' />
+      ) : (
+        <Menu className='text-black dark:text-white' />
+      )}
+    </button>
+  </div>
+</div>
+
                         {mobileDrawerOpen && (
                             <div className='fixed right-0 z-50 bg-[#d2dbd8] w-full mt-96 p-12 py-16 flex flex-col justify-center items-center border-b  border-neutral-700/80 dark:bg-gray-800 lg:hidden'>
                                 <ul className='flex-col items-center'>
@@ -94,8 +106,7 @@ const NavBar = ({ postUser, login, logout }) => {
                                     }
 
 
-                                    {darkMode ? <Moon onClick={toggleDark} className='cursor-pointer mt-2 text-white' /> : <Sun onClick={toggleDark} className='cursor-pointer mt-2' />}
-                                </div>
+                                   </div>
                             </div>
                         )}
                     </div>
