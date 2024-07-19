@@ -27,8 +27,8 @@ function PrayerTime() {
         <>
             
             <div className='flex flex-col items-center '>
-                <div className='my-2'>
-                <label className="block dark:text-white text-gray-700 text-sm font-bold mb-2" htmlFor="city">
+                <div className=''>
+                <label className="block dark:text-white text-gray-700 text-sm font-bold " htmlFor="city">
           Enter City
         </label>
         <input
@@ -42,8 +42,8 @@ function PrayerTime() {
                 </div>
             
                
-                <div className='my-2'>
-                <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2" htmlFor="country">
+                <div className=''>
+                <label className="block text-gray-700 dark:text-white text-sm font-bold" htmlFor="country">
           Enter Country
         </label>
         <input

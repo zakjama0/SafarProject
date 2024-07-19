@@ -242,7 +242,7 @@ const MapsContainer = () => {
               />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-            <div className='py-72 text-center'>Not Available In Beta</div>
+            <div className='py-60 text-center'>Not Available In Beta</div>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
               <PrayerTime />
