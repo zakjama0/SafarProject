@@ -86,7 +86,7 @@ const NavBar = ({ postUser, login, logout }) => {
                                 <div className={isPopupOpen ? 'blurred-background flex space-x-6' : 'flex space-x-6'}>
                                     {!isLoggedIn ?
                                         <div>
-                                            <Link to={"/login"}><button className='py-2 px-3 text-black dark:text-white border border-black dark:border-white rounded-md'>Sign in</button></Link>
+                                            <Link to={"/login"}><button className='py-2 px-3 mx-3 text-black dark:text-white border border-black dark:border-white rounded-md'>Sign in</button></Link>
                                             <Link to={"/registration"}><button className='py-2 px-3 border rounded-md bg-gradient-to-r from-blue-500 to-blue-800 dark:text-white'>Create account</button></Link>
                                         </div>
                                         :
@@ -94,7 +94,7 @@ const NavBar = ({ postUser, login, logout }) => {
                                     }
 
 
-                                    {darkMode ? <Moon onClick={toggleDark} className='cursor-pointer text-white' /> : <Sun onClick={toggleDark} className='cursor-pointer' />}
+                                    {darkMode ? <Moon onClick={toggleDark} className='cursor-pointer mt-2 text-white' /> : <Sun onClick={toggleDark} className='cursor-pointer mt-2' />}
                                 </div>
                             </div>
                         )}

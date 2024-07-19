@@ -52,66 +52,75 @@ const AddPlannedAttractionForm = ({ postPlannedAttraction, attractionId, itinera
   }
 
   return (
-    <div className="flex flex-col justify-evenly items-center mx-5">
-      <div className="main-login flex flex-col items-center">
-        <div className="wrapper flex justify-center items-center">
-          <div className="registration w-3/4 bg-gradient-to-b from-blue-500 via-blue-600 to-violet-800 border-2 border-yellow-400 backdrop-blur-sm shadow-lg text-white rounded-lg p-8">
-            <form onSubmit={handleSubmit}>
-              <h1 className="text-4xl text-center mb-6">Add {attractionName} to Itinerary!</h1>
-              <div className="input-box relative w-11/12 mb-6">
-                <label className="block mb-2">Itinerary:</label>
-                <select className="text-black"
-                  value={selectedItineraryName}
-                  onChange={(event) => handleItineraryChange(event)}
-                >
-                  <option value="">Create New Itinerary</option>
-                  {itineraries.map(itinerary => (
-                    <option key={itinerary.id} value={itinerary.name}>{itinerary.name}</option>
-                  ))}
-                </select>
-              </div>
-              {!selectedItinerary ?
-                <div className="input-box relative w-11/12 mb-6">
-                  <label className="block mb-2">New Itinerary Name:</label>
-                  <input
-                    className="w-full p-2 rounded text-black"
-                    name="itinerary-name"
-                    placeholder="Enter name of new itinerary"
-                    value={newItineraryName}
-                    onChange={event => setNewItineraryName(event.target.value)}
-                  />
-                </div>
-                :
-                <></>
-              }
-              <div className="input-box relative w-11/12 mb-6">
-                <label className="block mb-2">Start Date</label>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker value={startTime} onChange={value => setStartTime(value)} />
-                </LocalizationProvider>
-              </div>
-              {startTime !== null ?
-                <div className="input-box relative w-11/12 mb-6">
-                  <label className="block mb-2">End Date</label>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker value={endTime === null ? startTime : endTime} onChange={value => setEndTime(value)} />
-                  </LocalizationProvider>
-                </div>
-                :
-                <></>
-              }
-              <div className="register-button flex justify-center">
-                <input
-                  className="register-btn w-40 h-12 bg-white border-none outline-none rounded-full shadow-md cursor-pointer text-lg text-orange-500 font-semibold text-center"
-                  type="submit"
-                  value="Add"
-                />
-              </div>
-            </form>
+    <div className="flex mx-3 flex-col items-center justify-center">
+    <div className="bg-gray-100 mx-3 flex rounded-2xl shadow-lg max-w-3xl w-full h-auto">
+      <div className="w-full p-12 flex flex-col justify-center">
+        <h1 className="font-bold text-xl text-center text-indigo-400 mb-6">Add {attractionName} to Itinerary!</h1>
+
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <div className="input-box relative w-full mb-6">
+            <label className="block mb-2">Itinerary:</label>
+            <select 
+              className="p-2 rounded-xl border w-full text-black"
+              value={selectedItineraryName}
+              onChange={handleItineraryChange}
+            >
+              <option value="">Create New Itinerary</option>
+              {itineraries.map(itinerary => (
+                <option key={itinerary.id} value={itinerary.name}>{itinerary.name}</option>
+              ))}
+            </select>
           </div>
-        </div>
+
+          {!selectedItinerary && (
+            <div className="input-box relative w-full mb-6">
+              <label className="block mb-2">New Itinerary Name:</label>
+              <input
+                className="p-2 rounded-xl border w-full text-black"
+                name="itinerary-name"
+                placeholder="Enter name of new itinerary"
+                value={newItineraryName}
+                onChange={e => setNewItineraryName(e.target.value)}
+              />
+            </div>
+          )}
+
+          <div className="input-box relative w-full mb-6">
+            <label className="block mb-2">Start Date</label>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                value={startTime}
+                onChange={value => setStartTime(value)}
+                renderInput={(params) => <input {...params} className="p-2 rounded-xl border w-full text-black" />}
+              />
+            </LocalizationProvider>
+          </div>
+
+          {startTime && (
+            <div className="input-box relative w-full mb-6">
+              <label className="block mb-2">End Date</label>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  value={endTime === null ? startTime : endTime}
+                  onChange={value => setEndTime(value)}
+                  renderInput={(params) => <input {...params} className="p-2 rounded-xl border w-full text-black" />}
+                />
+              </LocalizationProvider>
+            </div>
+          )}
+
+          <div className="flex justify-center">
+            <button
+              className="bg-indigo-400 p-2 px-10 rounded-xl text-white py-2 hover:scale-105 duration-300"
+              type="submit"
+            >
+              Add
+            </button>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
   );
 };
 
